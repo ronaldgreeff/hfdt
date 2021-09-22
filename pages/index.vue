@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <div>
-      <Logo />
+      <Thirdway />
+      <TXoLogo />
+      <TXoLogo2 />
       <h1 class="title">hf-devtest</h1>
       <div class="links">
         <a
