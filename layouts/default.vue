@@ -5,51 +5,56 @@
 </template>
 
 <style>
+/* Colour */
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'MessinaSansWeb';
+  background: #f9f5ef;
+  color: #736357;
+}
+
+/* Mobile Fonts */
+.hero-text,
+input {
+  font-size: 72px;
+  line-height: 69px;
+  letter-spacing: -0.05em;
+}
+
+.introduction,
+.annotation,
+.submit,
+nav {
+  font-size: 18px;
+  line-height: 19px;
+  letter-spacing: 0em;
+}
+
+footer > a,
+nav > a {
+  font-size: 10px;
+  line-height: 10px;
+  letter-spacing: -0.045em;
+}
+
+/* Desktop Fonts */
+.hero-text,
+input {
+  font-size: 144px;
+  line-height: 138px;
+  letter-spacing: -0.05em;
+}
+.introduction,
+.annotation,
+.submit,
+nav {
+  font-size: 45px;
+  line-height: 45px;
+  letter-spacing: 0em;
+}
+footer > a,
+nav > a {
   font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+  line-height: 18px;
+  letter-spacing: -0.045em;
 }
 </style>

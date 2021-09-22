@@ -1,0 +1,8 @@
+@font-face {
+	font-family:'MessinaSansWeb';
+	src: url('assets/fonts/MessinaSansWeb-Regular.eot'); /* IE9 Compat Modes */
+	src:
+    url('assets/fonts/MessinaSansWeb-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	  url('assets/fonts/MessinaSansWeb-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('assets/fonts/MessinaSansWeb-Regular.woff') format('woff'); /* Pretty Modern Browsers */
+}
