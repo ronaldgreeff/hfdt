@@ -6,10 +6,15 @@
 
 <style>
 /* Colour */
-html {
+html, a {
   font-family: 'MessinaSansWeb';
   background: #f9f5ef;
   color: #736357;
+}
+
+a {
+  /* all: unset; */
+  text-decoration: none;
 }
 
 /* Mobile Fonts */

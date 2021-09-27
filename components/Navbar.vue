@@ -1,12 +1,14 @@
 <template>
   <div class="contact-block-parent">
-    <LogoTXo2
-      v-gsap.from="{
-        opacity: 0, 
-        x: -200, 
-        duration: 1
-      }"
-    />
+    <div class="logo-txo-2">
+      <LogoTXo2
+        v-gsap.from="{
+          opacity: 0, 
+          x: -200, 
+          duration: 1
+        }"
+      />
+    </div>
     <div class="contact-block-child" v-for="contactDetail in navContacts">
       <NavContactBlock v-bind:contactDetail="contactDetail" />
     </div>
@@ -33,6 +35,9 @@ export default {
 {
   display: table;
   width: 100%;
+}
+.logo-txo-2 {
+  width: 50vw;
 }
 .contact-block-child
 {
