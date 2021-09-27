@@ -1,6 +1,28 @@
 <template>
   <flickity class="carousel" ref="flickity" :options="flickityOptions">
-    <div v-for="(cData, cIndex) in carouselData" v-bind:id="'slide-' + [cIndex + 1]" class="carousel-cell">{{ cIndex + 1 }}</div>
+    <div v-for="(cData, cIndex) in carouselData" v-bind:id="'slide-' + cIndex" class="carousel-cell">
+      <img class="carousel-img" :src="require(`../assets/${cData.img}`)" :alt="'office image ' + [cIndex + 1]">
+      <table class="carousel-table">
+        <thead>
+          <th></th>
+          <th></th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name: {{ cData.name | titalize }}</td>
+            <td>Availability: [{{ cData.availability | capitalize }}]</td>
+          </tr>
+          <tr>
+            <td>Location: [{{ cData.location | titalize }}]</td>
+            <td>Size: [{{ cData.sizeValue }}] {{ cData.sizeMeasure }}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>{{ cData.description | capitalize }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </flickity>
 </template>
 
@@ -14,7 +36,7 @@ export default {
   data() {
     return {
       flickityOptions: {
-        initialIndex: 3,
+        initialIndex: 0,
         prevNextButtons: false,
         pageDots: false,
         wrapAround: true
@@ -33,7 +55,6 @@ export default {
     carouselData: Array
   }
 }
-
 </script>
 
 <style>
@@ -44,23 +65,17 @@ export default {
   box-sizing: border-box;
 }
 
-.carousel {
-  background: #EEE;
-}
-
 .carousel-cell {
-  width: 66%;
-  height: 200px;
+  width: 100%;
+  height: 800px;
   margin-right: 10px;
-  background: #8C8;
 }
 
-/* cell number */
-.carousel-cell:before {
-  display: block;
-  text-align: center;
-  line-height: 200px;
-  font-size: 80px;
-  color: white;
+.carousel-img {
+  max-width: 100%;
+}
+
+.carousel-cell > table > tbody > tr > td {
+  width: 50%;
 }
 </style>
