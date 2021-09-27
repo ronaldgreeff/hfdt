@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Stay Updated</h2>
+    <h2>STAY UPDATED</h2>
     <form>
       <label for="full-name"></label>
       <input type="text" id="full-name" name="full-name" placeholder="Full Name">
