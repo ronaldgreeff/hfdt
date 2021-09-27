@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <div>Image Slider</div>
-    <div>Table</div>
-  </div>
+  <flickity class="carousel" ref="flickity" :options="flickityOptions">
+    <div v-for="(cData, cIndex) in carouselData" v-bind:id="'slide-' + [cIndex + 1]" class="carousel-cell">{{ cIndex + 1 }}</div>
+  </flickity>
 </template>
 
 <script>
@@ -26,7 +25,6 @@ export default {
     next() {
       this.$refs.flickity.next();
     },
-    
     previous() {
       this.$refs.flickity.previous();
     }
@@ -37,3 +35,32 @@ export default {
 }
 
 </script>
+
+<style>
+/* external css: flickity.css */
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.carousel {
+  background: #EEE;
+}
+
+.carousel-cell {
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+  background: #8C8;
+}
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+</style>
