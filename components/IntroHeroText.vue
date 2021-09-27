@@ -1,5 +1,5 @@
 <template>
-  <h1>We’re hands-on and committed to evolving your business to strive for better</h1>
+  <h1>{{ introHeroText }}</h1>
 </template>
 
 <script>
