@@ -1,8 +1,8 @@
 <template>
   <div>
-    <flickity class="carousel" ref="flickity" :options="flickityOptions">
+    <!-- <flickity class="carousel" ref="flickity" :options="flickityOptions">
       <img v-for="(imageAddress, imageIndex) in carouselImages" class="carousel-cell" :src="require(`../assets/${imageAddress}`)" :alt="'office image ' + [imageIndex + 1]" />
-    </flickity>
+    </flickity> -->
     <p>{{ selectedIndex }}</p>
     <button @click="onChange()">Update</button>
     <table v-for="(tableData, tableIndex) in carouselData" v-bind:id="'carousel-table-' + tableIndex" class="carousel-table hidden">
@@ -30,35 +30,24 @@
 </template>
 
 <script>
-import Flickity from 'vue-flickity'
+// import Flickity from 'vue-flickity'
 
 export default {
   components: {
-    Flickity
+    // Flickity
   },
   data() {
     return {
-      flickityOptions: {
-        initialIndex: 0,
-        prevNextButtons: false,
-        pageDots: false,
-        wrapAround: true
-      },
+      // flickityOptions: {
+      //   initialIndex: 0,
+      //   prevNextButtons: false,
+      //   pageDots: false,
+      //   wrapAround: true
+      // },
       selectedIndex: 0
     }
   },
   methods: {
-    next() {
-      this.$refs.flickity.next();
-      this.selectedIndex = this.$refs.flickity.selectedIndex();
-    },
-    previous() {
-      this.$refs.flickity.previous();
-      this.selectedIndex = this.$refs.flickity.selectedIndex();
-    },
-    onChange() {
-      this.selectedIndex = this.$refs.flickity.selectedIndex();
-    }
   },
   props: {
     carouselData: Array,
