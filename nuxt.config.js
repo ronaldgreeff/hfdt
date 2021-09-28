@@ -18,7 +18,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    'mini.css',
+    // 'mini.css',
     '~layouts/global.css'
   ],
 
