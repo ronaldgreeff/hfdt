@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <Navbar v-bind:navContacts="navContacts" />
     <IntroHeroText v-bind:introHeroText="introHeroText" />
     <IntroDescription v-bind:introDescription="introDescription" />

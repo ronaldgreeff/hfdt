@@ -1,78 +1,65 @@
 <template>
   <div>
-    <!-- <flickity class="carousel" ref="flickity" :options="flickityOptions">
-      <img v-for="(imageAddress, imageIndex) in carouselImages" class="carousel-cell" :src="require(`../assets/${imageAddress}`)" :alt="'office image ' + [imageIndex + 1]" />
-    </flickity> -->
-    <p>{{ selectedIndex }}</p>
-    <button @click="onChange()">Update</button>
-    <table v-for="(tableData, tableIndex) in carouselData" v-bind:id="'carousel-table-' + tableIndex" class="carousel-table hidden">
+    
+    <swiper ref="mySwiper" :options="swiperOptions" @slideChangeTransitionEnd="setSelectedIndex">
+      <swiper-slide v-for="imageAddress in carouselImages">{{imageAddress}}</swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+    </swiper>
+
+    <p>{{ carouselData.slice(selectedIndex, [selectedIndex + 1])[0].img }}</p>
+    <table class="carousel-table">
       <thead>
         <th></th>
         <th></th>
       </thead>
       <tbody>
         <tr>
-          <td>Name: {{ tableData.name | titalize }}</td>
-          <td>Availability: [{{ tableData.availability | capitalize }}]</td>
+          <td>Name: {{ carouselData.slice(selectedIndex, [selectedIndex + 1])[0].name | titalize }}</td>
+          <td>Availability: [{{ carouselData.slice(selectedIndex, [selectedIndex + 1])[0].availability | capitalize }}]</td>
         </tr>
         <tr>
-          <td>Location: [{{ tableData.location | titalize }}]</td>
-          <td>Size: [{{ tableData.sizeValue }}] {{ tableData.sizeMeasure }}</td>
+          <td>Location: [{{ carouselData.slice(selectedIndex, [selectedIndex + 1])[0].location | titalize }}]</td>
+          <td>Size: [{{ carouselData.slice(selectedIndex, [selectedIndex + 1])[0].sizeValue }}] {{ carouselData.slice(selectedIndex, [selectedIndex + 1])[0].sizeMeasure }}</td>
         </tr>
         <tr>
           <td></td>
-          <td>{{ tableData.description | capitalize }}</td>
+          <td>{{ carouselData.slice(selectedIndex, [selectedIndex + 1])[0].description | capitalize }}</td>
         </tr>
       </tbody>
     </table>
-    <a href="#">Read More</a>
   </div>
 </template>
 
 <script>
-// import Flickity from 'vue-flickity'
-
-export default {
-  components: {
-    // Flickity
-  },
-  data() {
-    return {
-      // flickityOptions: {
-      //   initialIndex: 0,
-      //   prevNextButtons: false,
-      //   pageDots: false,
-      //   wrapAround: true
-      // },
-      selectedIndex: 0
-    }
-  },
-  methods: {
-  },
-  props: {
-    carouselData: Array,
-    carouselImages: Array
+  export default {
+    name: 'carrousel',
+    data() {
+      return {
+        swiperOptions: {
+          pagination: {
+            el: '.swiper-pagination'
+          },
+          // Some Swiper option/callback...
+        },
+        selectedIndex: null,
+      }
+    },
+    computed: {
+      swiper() {
+        return this.$refs.mySwiper.$swiper
+      }
+    },
+    methods: {
+      setSelectedIndex() {
+        this.selectedIndex = this.$refs.mySwiper.$swiper.activeIndex
+      }
+    },
+    mounted() {
+      this.setSelectedIndex()
+    },
+    props: {
+      carouselData: Array,
+      carouselImages: Array
+    },
   }
-}
 </script>
-
-<style>
-/* external css: flickity.css */
-
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.carousel-cell {
-  width: 100vw;
-  min-height: 50vh;
-  max-height: 80vh;
-  object-fit: contain;
-  margin-right: 10px;
-}
-
-.carousel-table > tbody > tr > td {
-  width: 50%;
-}
-</style>
