@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <swiper ref="mySwiper" :options="swiperOptions" @slideChangeTransitionEnd="setSelectedIndex">
       <swiper-slide v-for="imageAddress in carouselImages">
         <img :src="require(`../assets/${imageAddress}`)" alt="">
