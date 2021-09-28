@@ -6,3 +6,7 @@
 	  url('assets/fonts/MessinaSansWeb-Regular.woff2') format('woff2'), /* Super Modern Browsers */
     url('assets/fonts/MessinaSansWeb-Regular.woff') format('woff'); /* Pretty Modern Browsers */
 }
+
+.hidden {
+	display: none;
+}

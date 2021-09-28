@@ -1,29 +1,32 @@
 <template>
-  <flickity class="carousel" ref="flickity" :options="flickityOptions">
-    <div v-for="(cData, cIndex) in carouselData" v-bind:id="'slide-' + cIndex" class="carousel-cell">
-      <img class="carousel-img" :src="require(`../assets/${cData.img}`)" :alt="'office image ' + [cIndex + 1]">
-      <table class="carousel-table">
-        <thead>
-          <th></th>
-          <th></th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Name: {{ cData.name | titalize }}</td>
-            <td>Availability: [{{ cData.availability | capitalize }}]</td>
-          </tr>
-          <tr>
-            <td>Location: [{{ cData.location | titalize }}]</td>
-            <td>Size: [{{ cData.sizeValue }}] {{ cData.sizeMeasure }}</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>{{ cData.description | capitalize }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </flickity>
+  <div>
+    <flickity class="carousel" ref="flickity" :options="flickityOptions">
+      <img v-for="(imageAddress, imageIndex) in carouselImages" class="carousel-cell" :src="require(`../assets/${imageAddress}`)" :alt="'office image ' + [imageIndex + 1]" />
+    </flickity>
+    <p>{{ selectedIndex }}</p>
+    <button @click="onChange()">Update</button>
+    <table v-for="(tableData, tableIndex) in carouselData" v-bind:id="'carousel-table-' + tableIndex" class="carousel-table hidden">
+      <thead>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name: {{ tableData.name | titalize }}</td>
+          <td>Availability: [{{ tableData.availability | capitalize }}]</td>
+        </tr>
+        <tr>
+          <td>Location: [{{ tableData.location | titalize }}]</td>
+          <td>Size: [{{ tableData.sizeValue }}] {{ tableData.sizeMeasure }}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>{{ tableData.description | capitalize }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <a href="#">Read More</a>
+  </div>
 </template>
 
 <script>
@@ -40,19 +43,26 @@ export default {
         prevNextButtons: false,
         pageDots: false,
         wrapAround: true
-      }
+      },
+      selectedIndex: 0
     }
   },
   methods: {
     next() {
       this.$refs.flickity.next();
+      this.selectedIndex = this.$refs.flickity.selectedIndex();
     },
     previous() {
       this.$refs.flickity.previous();
+      this.selectedIndex = this.$refs.flickity.selectedIndex();
+    },
+    onChange() {
+      this.selectedIndex = this.$refs.flickity.selectedIndex();
     }
   },
   props: {
-    carouselData: Array
+    carouselData: Array,
+    carouselImages: Array
   }
 }
 </script>
@@ -66,16 +76,14 @@ export default {
 }
 
 .carousel-cell {
-  width: 100%;
-  height: 800px;
+  width: 100vw;
+  min-height: 50vh;
+  max-height: 80vh;
+  object-fit: contain;
   margin-right: 10px;
 }
 
-.carousel-img {
-  max-width: 100%;
-}
-
-.carousel-cell > table > tbody > tr > td {
+.carousel-table > tbody > tr > td {
   width: 50%;
 }
 </style>

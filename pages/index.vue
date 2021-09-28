@@ -3,7 +3,7 @@
     <Navbar v-bind:navContacts="navContacts" />
     <IntroHeroText v-bind:introHeroText="introHeroText" />
     <IntroDescription v-bind:introDescription="introDescription" />
-    <MainCarousel v-bind:carouselData="carouselData" />
+    <MainCarousel v-bind:carouselData="carouselData" v-bind:carouselImages="carouselImages" />
     <MainSubscribe />
   </div>
 </template>
@@ -38,6 +38,13 @@ export default {
         {img: 'media/c3.jpeg', name: 'sample title', location: 'soho', availability: 'now', sizeValue: '4,200', sizeMeasure: 'sqft', description: 'Quam eos premqui tem cupta il inimet as rerum rent volum sitibus idunt la consenis ea nos doluptur, ipsapernates praeperrunte nobist peditaquis eum audaecto quam, susa consecae isto eum fugit.'},
         {img: 'media/c4.jpeg', name: 'sample title', location: 'soho', availability: 'now', sizeValue: '4,200', sizeMeasure: 'sqft', description: 'Quam eos premqui tem cupta il inimet as rerum rent volum sitibus idunt la consenis ea nos doluptur, ipsapernates praeperrunte nobist peditaquis eum audaecto quam, susa consecae isto eum fugit.'},
         {img: 'media/c5.jpeg', name: 'sample title', location: 'soho', availability: 'now', sizeValue: '4,200', sizeMeasure: 'sqft', description: 'Quam eos premqui tem cupta il inimet as rerum rent volum sitibus idunt la consenis ea nos doluptur, ipsapernates praeperrunte nobist peditaquis eum audaecto quam, susa consecae isto eum fugit.'}
+      ],
+      carouselImages: [
+        'media/c1.jpg',
+        'media/c2.jpeg',
+        'media/c3.jpeg',
+        'media/c4.jpeg',
+        'media/c5.jpeg',
       ],
     }
   },
