@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ introHeroText }}</h1>
+  <p class="hero-text">{{ introHeroText }}</p>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>{{ introDescription.title | upperCase }}</h2>
-    <p>{{ introDescription.text }}</p>
+    <p class="introduction">{{ introDescription.text }}</p>
   </div>
 </template>
 
