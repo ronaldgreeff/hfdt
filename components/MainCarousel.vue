@@ -1,29 +1,30 @@
 <template>
   <div>
     <swiper ref="mySwiper" :options="swiperOptions" @slideChangeTransitionEnd="setSelectedIndex">
-      <swiper-slide v-for="imageAddress in carouselImages">
-        <img :src="require(`../assets/${imageAddress}`)" alt="">
+      <swiper-slide v-for="(imageAddress, iI) in carouselImages">
+        <img :src="require(`../assets/${imageAddress}`)" :alt="'Office image ' + iI">
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
-    <p>{{ carouselData[selectedIndex].img }}</p>
-    <table class="carousel-table">
+    <table id="main-carousel" class="carousel-table">
       <thead>
+        <th></th>
         <th></th>
         <th></th>
       </thead>
       <tbody>
         <tr>
-          <td>Name: {{ carouselData[selectedIndex].name | titalize }}</td>
-          <td>Availability: [{{ carouselData[selectedIndex].availability | capitalize }}]</td>
+          <td class="border-bottom border-top">Name: {{ carouselData[selectedIndex].name | titalize }}</td>
+          <td class="td-space"></td>
+          <td class="border-bottom border-top">Size: [{{ carouselData[selectedIndex].sizeValue }}] {{ carouselData[selectedIndex].sizeMeasure }}</td>
         </tr>
         <tr>
-          <td>Location: [{{ carouselData[selectedIndex].location | titalize }}]</td>
-          <td>Size: [{{ carouselData[selectedIndex].sizeValue }}] {{ carouselData[selectedIndex].sizeMeasure }}</td>
+          <td class="border-bottom">Location: [{{ carouselData[selectedIndex].location | titalize }}]</td>
+          <td class="td-space"></td>
+          <td class="border-bottom">Availability: [{{ carouselData[selectedIndex].availability | capitalize }}]</td>
         </tr>
         <tr>
-          <td></td>
-          <td>{{ carouselData[selectedIndex].description | capitalize }}</td>
+           <td class="border-bottom" colspan="3">{{ carouselData[selectedIndex].description | capitalize }}</td>
         </tr>
       </tbody>
     </table>
@@ -32,7 +33,7 @@
 
 <script>
   export default {
-    name: 'carrousel',
+    name: 'carousel',
     data() {
       return {
         swiperOptions: {
