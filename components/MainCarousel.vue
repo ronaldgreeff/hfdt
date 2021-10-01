@@ -28,6 +28,7 @@
         </tr>
       </tbody>
     </table>
+    <button class="submit">Read more</button>
   </div>
 </template>
 
