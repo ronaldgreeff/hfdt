@@ -6,12 +6,12 @@
 
 <style>
 /* Colour */
-html, hr {
+html, hr, .nav-menu {
   background: #f9f5ef;
 }
 
 /* want to keep proper tags but
-  the design seems to have H* and p 
+  the design seems to have H* and p
   font-weights/sizing inverted */
 h1, h2, h3 {
   font-weight: lighter;
@@ -40,14 +40,17 @@ img {
   height: 10vh;
 }
 .section {
+  display: block;
   margin-top: 10vh;
   margin-bottom: 20vh;
+}
+td, .submit {
+  padding-top: 5px;
+  padding-bottom: 7px;
 }
 td.border-bottom
 {
   border-bottom: 1px solid #736357;
-  padding-top: 5px;
-  padding-bottom: 7px;
 }
 td.border-top {
   border-top: 1px solid #736357;
@@ -104,8 +107,8 @@ button {
   border: none;
 }
 .submit {
-  margin-top: 50px;
   text-align: left;
+  padding: 0;
 }
 
 footer a,

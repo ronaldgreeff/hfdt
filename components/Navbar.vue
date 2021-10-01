@@ -1,38 +1,54 @@
 <template>
-  <header id="header">
-    <nav class="header">
-
-      <a href="/" class="logo">
+  <header class="header">
+    <nav class="navbar">
+      <a href="/" class="nav-logo">
         <LogoTXo2
           v-gsap.from="{
-            opacity: 0,
-            x: -200,
-            y: 0,
-            duration: 1
+          opacity: 0,
+          x: -200,
+          y: 0,
+          duration: 1
           }"
         />
       </a>
 
-      <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-      <input class="menu-btn" type="checkbox" id="menu-btn" />
-
-      <div class="spacer"></div>
-      <hr>
-
-      <ul class="menu nav-contacts">
-        <li class="nav-contact-col" v-for="navContactCol in navColumns">
-          <h3 class="nav-contact-row-title">{{ navContactCol.colTitle | upperCase }}</h3>
-          <div class="nav-contact-row" v-for="navContactRow in navContactCol.contactBlocks">
-            <div class="nav-contact-line" v-for="contactLine in navContactRow">
-              <p class="reduce-y-margin" v-if="contactLine.type === 'title'">{{ contactLine.value | capitalize }}</p>
-              <a class="reduce-y-margin" v-else-if="contactLine.type === 'email'" :href="'mailto:' + contactLine.value">{{ contactLine.value | capitalize }}</a>
-              <a class="reduce-y-margin" v-else-if="contactLine.type === 'link'" :href="'//' + contactLine.url" target="_blank">{{ contactLine.value | capitalize }}</a>
-              <p class="reduce-y-margin" v-else>{{ contactLine.value }}</p>
+      <ul
+        class="nav-menu"
+        v-bind:class="{ active: isActive }"
+      >
+        <li class="nav-item" v-for="navContactCol in navColumns">
+          <div class="">
+            <h3 class="">{{ navContactCol.colTitle | upperCase }}</h3>
+          </div>
+          <div v-if="navContactCol.contactBlocks.length > 1" class="responsive-nav">
+            <div class="" v-for="navContactRow in navContactCol.contactBlocks">
+              <div class="nav-contact-line" v-for="contactLine in navContactRow">
+                <p class="reduce-y-margin" v-if="contactLine.type === 'title'">{{ contactLine.value | capitalize }}</p>
+                <a class="reduce-y-margin" v-else-if="contactLine.type === 'email'" :href="'mailto:' + contactLine.value">{{ contactLine.value | capitalize }}</a>
+                <a class="reduce-y-margin" v-else-if="contactLine.type === 'link'" :href="'//' + contactLine.url" target="_blank">{{ contactLine.value | capitalize }}</a>
+                <p class="reduce-y-margin" v-else>{{ contactLine.value }}</p>
+              </div>
             </div>
           </div>
-          <hr>
+          <div v-else class="">
+            <div class="nav-contact-line" v-for="contactLine in navContactCol.contactBlocks[0]">
+              <p class="" v-if="contactLine.type === 'title'">{{ contactLine.value | capitalize }}</p>
+              <a class="" v-else-if="contactLine.type === 'email'" :href="'mailto:' + contactLine.value">{{ contactLine.value | capitalize }}</a>
+              <a class="" v-else-if="contactLine.type === 'link'" :href="'//' + contactLine.url" target="_blank">{{ contactLine.value | capitalize }}</a>
+              <p class="" v-else>{{ contactLine.value }}</p>
+            </div>
+          </div>
         </li>
       </ul>
+      <div
+        class="hamburger"
+        v-on:click="toggleMenu"
+        v-bind:class="{ active: isActive }"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
     </nav>
   </header>
 </template>
@@ -41,145 +57,110 @@
 import LogoTXo2 from '@/components/LogoTXo2'
 
 export default {
+  data() {
+    return {
+      isActive: false
+    }
+  },
   components: {
     LogoTXo2,
   },
   props: {
     navColumns: Array,
+  },
+  methods: {
+    toggleMenu() {
+      this.isActive = !this.isActive
+    }
   }
 }
 </script>
 
 <style>
 
-/* nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-} */
-
-/* .nav-logo {width: 100%;} */
-/* .nav-contacts { max-width: 50%; } */
-
-.contact-block-child { display: table-cell; }
+li {
+    list-style: none;
+}
 
 .header {
-
-  position: relative;
-  width: 100%;
-  z-index: 3;
+  position: fixed;
+  top: .5rem;
+  width: 90%;
+}
+.header-space {
+  margin-top: 100vh;
 }
 
-.header ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  overflow: hidden;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.header li { display: block; }
-
-/* .header li a:hover, */
-/* .header .menu-btn:hover {
-  background-color: #f4f4f4;
-} */
-
-.header .logo {
-  display: block;
-  float: left;
-  font-size: 2em;
-  padding: 10px 20px;
-  text-decoration: none;
-}
-
-/* menu */
-.header .menu {
-  clear: both;
-  max-height: 0;
-  transition: max-height .2s ease-out;
-}
-
-/* menu icon */
-.header .menu-icon {
-  cursor: pointer;
-  display: inline-block;
-  float: right;
-  padding: 28px 20px;
-  position: relative;
-  user-select: none;
-}
-
-.header .menu-icon .navicon {
-  background: #333;
-  display: inline-block;
-  height: 2px;
-  position: relative;
-  transition: background .2s ease-out;
-  width: 18px;
-}
-
-.header .menu-icon .navicon:before,
-.header .menu-icon .navicon:after {
-  background: #333;
-  content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-  transition: all .2s ease-out;
-  width: 100%;
-}
-
-.header .menu-icon .navicon:before {
-  top: 5px;
-}
-
-.header .menu-icon .navicon:after {
-  top: -5px;
-}
-
-/* menu btn */
-
-.header .menu-btn {
+.hamburger {
   display: none;
 }
 
-.header .menu-btn:checked ~ .menu {
-  max-height: 100%;
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #736357;
 }
 
-.header .menu-btn:checked ~ .menu-icon .navicon {
-  background: transparent;
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
 }
 
-.header .menu-btn:checked ~ .menu-icon .navicon:before {
-  transform: rotate(-45deg);
-}
+/* .nav-item {}
+.nav-link {}
+.nav-link:hover {}
+.nav-logo {} */
 
-.header .menu-btn:checked ~ .menu-icon .navicon:after {
-  transform: rotate(45deg);
-}
-
-.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
-.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
-  top: 0;
-}
-
-/* 48em = 768px */
-
-@media (min-width: 48em) {
-  .header li {
-    float: left;
+@media only screen and (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    height: 90vh;
+    left: -110%;
+    top: 4rem;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
   }
-  .header li a {
-    padding: 20px 30px;
+
+  .nav-menu.active {
+    left: 0;
   }
-  .header .menu {
-    clear: none;
-    float: right;
-    max-height: none;
+
+  .nav-item {
+    margin: 2.5rem 0;
   }
-  .header .menu-icon {
-    display: none;
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    -webkit-transform: translateY(8px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    -webkit-transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
   }
 }
 </style>
