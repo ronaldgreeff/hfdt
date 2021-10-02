@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header id="header" class="header">
     <nav class="navbar">
       <a href="/" class="nav-logo">
         <LogoTXo2
@@ -84,7 +84,7 @@ li {
 
 .header {
   position: fixed;
-  top: .5rem;
+  top: 0;
   width: 90%;
 }
 .header-space {
@@ -128,7 +128,7 @@ li {
     position: fixed;
     height: 90vh;
     left: -110%;
-    top: 4rem;
+    top: 3.5rem;
     flex-direction: column;
     width: 100%;
     border-radius: 10px;

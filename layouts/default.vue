@@ -6,7 +6,7 @@
 
 <style>
 /* Colour */
-html, hr, .nav-menu {
+html, header, hr, .nav-menu {
   background: #f9f5ef;
 }
 
@@ -79,7 +79,7 @@ hr {
 
 /* Responsiveness */
 #wrapper { width:95%; margin: 0 auto; }
-#header { width:100%; }
+#header { width:95%; z-index: 99;}
 #content { width:100%; }
 #sidebar { width:100%; }
 #footer { width:100%; }

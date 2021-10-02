@@ -1,7 +1,7 @@
 <template>
   <div>
     <swiper ref="mySwiper" :options="swiperOptions" @slideChangeTransitionEnd="setSelectedIndex">
-      <swiper-slide v-for="(imageAddress, iI) in carouselImages">
+      <swiper-slide v-for="(imageAddress, iI) in carouselImages" v-bind:key="'carousel_img_' + iI">
         <img :src="require(`../assets/${imageAddress}`)" :alt="'Office image ' + iI">
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
