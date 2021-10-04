@@ -1,15 +1,14 @@
 <template>
-  <div id="wrapper">
+  <div>
     <Nuxt />
   </div>
 </template>
 
 <style>
-/* Colour */
+
 html, header, hr, .nav-menu {
   background: #f9f5ef;
 }
-
 /* want to keep proper tags but
   the design seems to have H* and p
   font-weights/sizing inverted */
@@ -21,16 +20,23 @@ p {
   font-size: x-large;
   margin-top: 5px;
 }
-.reduce-y-margin {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
 a {
   text-decoration: none;
 }
-html, body, a, a:link, input, button {
+html,
+body,
+a, a:link,
+input, ::placeholder,
+button,
+hr {
   font-family: 'MessinaSansWeb';
   color: #736357;
+}
+nav a {
+  height: 100%;
+}
+::placeholder {
+  opacity: 0.25;
 }
 img {
   max-width: 100%;
@@ -39,11 +45,7 @@ img {
 .spacer {
   height: 10vh;
 }
-.section {
-  display: block;
-  margin-top: 10vh;
-  margin-bottom: 20vh;
-}
+
 td, .submit {
   padding-top: 5px;
   padding-bottom: 7px;
@@ -64,25 +66,13 @@ input {
   outline: none;
   padding: 0px;
   background-color: unset;
+  caret-color: #736357;
 }
-::placeholder {
-  color: #736357;
-  opacity: 0.25;
-}
-
-hr {
+/* hr {
   width: 100%;
-  border-color: #736357;
   margin-left: auto;
   margin-right: auto;
-}
-
-/* Responsiveness */
-#wrapper { width:95%; margin: 0 auto; }
-#header { width:95%; z-index: 99;}
-#content { width:100%; }
-#sidebar { width:100%; }
-#footer { width:100%; }
+} */
 
 /* Mobile Fonts */
 .hero-text,
@@ -127,19 +117,8 @@ nav a,
   text-align: left;
 }
 
-/* Small devices (landscape phones, 576px and up) */
-/* @media (min-width: 576px) {} */
-
-/* Medium devices (tablets, 768px and up) */
-/* @media (min-width: 768px) {
-  #wrapper { width:90%;  margin: 0 auto; }
-  #content { width:70%; float:left; }
-  #sidebar { width:30%; float:right; }
-} */
-
-/* Large devices (desktops, 992px and up) */
 /* Desktop Fonts */
-/* @media (min-width: 992px) {
+@media (min-width: 992px) {
   .hero-text,
   input {
     font-size: 144px;
@@ -160,11 +139,6 @@ nav a,
     line-height: 18px;
     letter-spacing: -0.045em;
   }
-} */
-
-/* Extra large devices (large desktops, 1200px and up) */
-/* @media (min-width: 1200px) {
-  #wrapper { width:90%; margin: 0 auto; }
-} */
+}
 
 </style>

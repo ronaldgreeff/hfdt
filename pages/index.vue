@@ -1,12 +1,18 @@
 <template>
-  <div>
-    <Navbar v-bind:navColumns="navColumns" />
-    <div class="section header-space"><IntroHeroText v-bind:introHeroText="introHeroText" /></div>
-    <div class="section"><IntroDescription v-bind:introDescription="introDescription" /></div>
-    <div class="section"><MainCarousel v-bind:carouselData="carouselData" v-bind:carouselImages="carouselImages" /></div>
-    <div class="section"><MainSubscribe /></div>
-    <div class="spacer"></div>
-    <Footer />
+  <div id="wrapper">
+    <div id="header">
+      <Navbar v-bind:navColumns="navColumns" />
+    </div>
+    <div id="content">
+      <div class="section header-space"><IntroHeroText v-bind:introHeroText="introHeroText" /></div>
+      <div class="section"><IntroDescription v-bind:introDescription="introDescription" /></div>
+      <div class="section"><MainCarousel v-bind:carouselData="carouselData" v-bind:carouselImages="carouselImages" /></div>
+      <div class="section"><MainSubscribe /></div>
+      <div class="spacer"></div>
+    </div>
+    <div id="footer">
+      <Footer />
+    </div>
   </div>
 </template>
 
@@ -59,7 +65,38 @@ export default {
     }
   },
 }
-
 </script>
 
-<style></style>
+<style>
+#wrapper {width:95%;  margin: auto; }
+#header {width:100%; }
+#content {width:100%; }
+#sidebar {width:100%; }
+#footer {width:100%; }
+
+ul {
+  padding: 5%;
+}
+
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {
+  #wrapper {width:90%;  margin: 0 auto; }
+  #content {width:70%; float:left; }
+  #sidebar {width:30%; float:right; }
+}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {
+  #wrapper {width:90%;  margin: 0 auto; }
+}
+.section {
+  display: block;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+.section:first-of-type {
+  margin-top: 20vh;
+}
+</style>
