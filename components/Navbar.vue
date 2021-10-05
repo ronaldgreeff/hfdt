@@ -15,15 +15,20 @@
         class="nav-menu"
         v-bind:class="{ active: activeMenu }"
       >
-        <li class="nav-item"><hr /></li>
-        <li class="nav-item" v-for="navContactCol in navColumns">
+        <li class="nav-item mobile-only"><hr /></li>
+        <li
+          class="nav-item"
+          v-bind:class="navContactCol.contactBlocks.length == 1 ? 'nav-col-spacer' : none "
+          v-for="navContactCol in navColumns"
+          >
           <div class="nav-item-block">
             <div class="">
-              <h3 class="nav-col-text">{{ navContactCol.colTitle | upperCase }}</h3>
+              <h3 class="text-left">{{ navContactCol.colTitle | upperCase }}</h3>
             </div>
+
             <div v-if="navContactCol.contactBlocks.length > 1" class="responsive-nav">
-              <div class="nav-col-text" v-for="navContactRow in navContactCol.contactBlocks">
-                <div v-for="contactLine in navContactRow">
+              <div class="text-left nav-col-spacer-half" v-for="navContactRow in navContactCol.contactBlocks">
+                <div class="text-left" v-for="contactLine in navContactRow">
                   <p class="nav-contact-line" v-if="contactLine.type === 'title'">{{ contactLine.value | capitalize }}</p>
                   <a class="nav-contact-line" v-else-if="contactLine.type === 'email'" :href="'mailto:' + contactLine.value">{{ contactLine.value | capitalize }}</a>
                   <a class="nav-contact-line" v-else-if="contactLine.type === 'link'" :href="'//' + contactLine.url" target="_blank">{{ contactLine.value | capitalize }}</a>
@@ -31,20 +36,24 @@
                 </div>
               </div>
             </div>
-            <div v-else class="responsive-nav">
-              <div class="nav-col-text" v-for="contactLine in navContactCol.contactBlocks[0]">
-                <p class="nav-contact-line" v-if="contactLine.type === 'title'">{{ contactLine.value | capitalize }}</p>
-                <a class="nav-contact-line" v-else-if="contactLine.type === 'email'" :href="'mailto:' + contactLine.value">{{ contactLine.value | capitalize }}</a>
-                <a class="nav-contact-line" v-else-if="contactLine.type === 'link'" :href="'//' + contactLine.url" target="_blank">{{ contactLine.value | capitalize }}</a>
-                <p class="nav-contact-line" v-else>{{ contactLine.value }}</p>
+
+            <div v-else>
+              <div class="text-left" v-for="contactLine in navContactCol.contactBlocks[0]">
+                <div class="text-left">
+                  <p class="nav-contact-line" v-if="contactLine.type === 'title'">{{ contactLine.value | capitalize }}</p>
+                  <a class="nav-contact-line" v-else-if="contactLine.type === 'email'" :href="'mailto:' + contactLine.value">{{ contactLine.value | capitalize }}</a>
+                  <a class="nav-contact-line" v-else-if="contactLine.type === 'link'" :href="'//' + contactLine.url" target="_blank">{{ contactLine.value | capitalize }}</a>
+                  <p class="nav-contact-line" v-else>{{ contactLine.value }}</p>
+                </div>
               </div>
             </div>
+
           </div>
           <hr />
         </li>
       </ul>
       <div
-        class="hamburger"
+        class="hamburger mobile-only"
         v-on:click="toggleMenu"
         v-bind:class="{ active: activeMenu }"
       >
@@ -81,72 +90,61 @@ export default {
 
 <style>
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  z-index: 99;
-  height: 20vh;
-}
-.header-space {
-  margin-top: 100vh;
 }
 nav {
-  margin: 25px 25px 75px 25px;
-}
-/* .nav-item { margin-top:  10vh; } */
-.nav-col-text { text-align: left; }
-.responsive-nav {}
-
-.nav-contact-line {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  /* text-align: left; */
-}
-
-li {
-  list-style: none;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.hamburger {
-  display: none;
+  margin: 40px 25px 75px 25px;
 }
 hr {
-  border: 0px;
-  width: 90%;
-  float: left;
+  display: none;
 }
-.bar, hr {
-  display: block;
-  height: 2px;
-  background-color: #736357;
+.navbar {
 }
-.bar {
-  margin: 17px auto;
-  width: 55px;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-.nav-menu {
-  /* display: flex; */
-  justify-content: space-between;
-  /* align-items: left; */
-  /* padding: 0px; */
-}
-
-/* .nav-item {}
-.nav-link {}
-.nav-link:hover {}
-.nav-logo {} */
 
 @media only screen and (max-width: 768px) {
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+    height: 20vh;
+  }
+  nav {
+    margin: 25px 25px 75px 25px;
+  }
+  .text-left { text-align: left; }
+  .nav-contact-line {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-menu {
+    padding: 5%;
+  }
+  .hamburger {
+    display: none;
+  }
+  hr {
+    border: 0px;
+    width: 90%;
+    float: left;
+  }
+  .bar, hr {
+    display: block;
+    height: 2px;
+    background-color: #736357;
+  }
+  .bar {
+    margin: 17px auto;
+    width: 55px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
   .nav-menu {
     margin-top: 20vh;
     position: fixed;
@@ -163,7 +161,7 @@ hr {
     left: 0;
   }
 
-  .nav-item-block {
+  .nav-col-spacer {
     margin: 4vh 0vw 1vh 0vw;
   }
 
@@ -186,4 +184,57 @@ hr {
     transform: translateY(-19px) rotate(-45deg);
   }
 }
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: flex-start;
+    align-items: flex-start;
+  }
+  .nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: stretch;
+    margin: 0 5vw 0 0;
+    padding: 0;
+  }
+  .responsive-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  div.responsive-nav > div > div:nth-child(1) > p {
+    margin-top: 0;
+  }
+  .nav-col-spacer {
+    margin: 0vh 2vw 0vh 3vw;
+  }
+  .nav-col-spacer-half {
+    margin: 0vh 1vw 0vh 2vw;
+  }
+  div.responsive-nav > div:nth-child(1) {
+    margin-left: 0;
+  }
+  .nav-menu h3 {
+    margin-top: 0;
+  }
+  .nav-menu p, .nav-menu a {
+    margin: 0;
+  }
+}
+
+/* .nav-menu {}
+.nav-item {}
+.nav-link {}
+.nav-link:hover {}
+.nav-logo {}
+.responsive-nav {} */
+
 </style>

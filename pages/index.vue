@@ -4,7 +4,7 @@
       <Navbar v-bind:navColumns="navColumns" />
     </div>
     <div id="content">
-      <div class="section header-space"><IntroHeroText v-bind:introHeroText="introHeroText" /></div>
+      <div class="section"><IntroHeroText v-bind:introHeroText="introHeroText" /></div>
       <div class="section"><IntroDescription v-bind:introDescription="introDescription" /></div>
       <div class="section"><MainCarousel v-bind:carouselData="carouselData" v-bind:carouselImages="carouselImages" /></div>
       <div class="section"><MainSubscribe /></div>
@@ -46,8 +46,8 @@ export default {
           [{type: 'link', value: 'instagram', url: 'www.instagram.com'}, {type: 'link', value: 'linkedin', url: 'www.linkedin.com'}, {type: 'link', value: 'facebook', url: 'www.facebook.com'}]
         ]}
       ],
-      introHeroText: 'We’re hands-on and committed to evolving your business to strive for better',
-      introDescription: {title: 'Our offering', text: 'We provide physical, pragmatic and personal business guidance. Success is never static. Neither are we. We’ll be your business partners for positive change'},
+      introHeroText: 'We’re hands-on and committed to evolving your business to strive for better.',
+      introDescription: {title: 'Our offering', text: 'We provide physical, pragmatic and personal business guidance. Success is never static. Neither are we. We’ll be your business partners for positive change.'},
       carouselData: [
         {img: 'media/c1.jpg', name: 'sample title', location: 'soho', availability: 'now', sizeValue: '4,200', sizeMeasure: 'sqft', description: 'Quam eos premqui tem cupta il inimet as rerum rent volum sitibus idunt la consenis ea nos doluptur, ipsapernates praeperrunte nobist peditaquis eum audaecto quam, susa consecae isto eum fugit.'},
         {img: 'media/c2.jpeg', name: 'sample title', location: 'soho', availability: 'now', sizeValue: '4,200', sizeMeasure: 'sqft', description: 'Quam eos premqui tem cupta il inimet as rerum rent volum sitibus idunt la consenis ea nos doluptur, ipsapernates praeperrunte nobist peditaquis eum audaecto quam, susa consecae isto eum fugit.'},
@@ -69,34 +69,25 @@ export default {
 
 <style>
 #wrapper {width:95%;  margin: auto; }
-#header {width:100%; }
-#content {width:100%; }
-#sidebar {width:100%; }
-#footer {width:100%; }
 
-ul {
-  padding: 5%;
+@media (max-width: 768px) {
+  .section {
+    display: block;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  }
+  .section:first-of-type {
+    margin-top: 20vh;
+  }
 }
 
-@media (min-width: 576px) {}
-
 @media (min-width: 768px) {
-  #wrapper {width:90%;  margin: 0 auto; }
-  #content {width:70%; float:left; }
-  #sidebar {width:30%; float:right; }
+  #wrapper {width: 98%;  margin: 0 auto; }
+  #content {width: 96%; margin: 0 auto;}
 }
 
 @media (min-width: 992px) {}
 
 @media (min-width: 1200px) {
-  #wrapper {width:90%;  margin: 0 auto; }
-}
-.section {
-  display: block;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
-}
-.section:first-of-type {
-  margin-top: 20vh;
 }
 </style>
