@@ -53,33 +53,6 @@ img {
 li {
   list-style: none;
 }
-td, .submit {
-  padding-top: 5px;
-  padding-bottom: 7px;
-}
-td.border-bottom,
-td.border-top {
-  border-top: 1px solid #736357;
-}
-form {
-  margin-top: 5px;
-}
-input {
-  width: 100%;
-  border: none;
-  outline: none;
-  padding: 0px;
-  background-color: unset;
-  caret-color: #736357;
-}
-button {
-  background: none;
-  border: none;
-}
-.submit {
-  text-align: left;
-  padding: 0;
-}
 
 @media (max-width: 768px) {
   /* Hero text / Form inputs
@@ -127,7 +100,7 @@ button {
   }
   .introduction, /**/
   .annotation, /**/
-  .submit, /**/
+  .submit /**/
   {
     font-size: 45px; /**/
     line-height: 45px; /**/

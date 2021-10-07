@@ -80,14 +80,10 @@ export default {
     margin-top: 20vh;
   }
 }
-
 @media (min-width: 768px) {
   #wrapper {width: 98%;  margin: 0 auto; }
   #content {width: 96%; margin: 0 auto;}
 }
-
 @media (min-width: 992px) {}
-
-@media (min-width: 1200px) {
-}
+@media (min-width: 1200px) {}
 </style>
