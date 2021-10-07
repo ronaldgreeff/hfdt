@@ -26,7 +26,8 @@ input {
   background-color: unset;
   caret-color: #736357;
 }
-/* Introduction / Annotations / Submit button
+/*
+Introduction / Annotations / Submit button
 */
 .submit {
   text-align: left;

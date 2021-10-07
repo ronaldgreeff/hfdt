@@ -68,9 +68,11 @@ export default {
 </script>
 
 <style>
-#wrapper {width:95%;  margin: auto; }
-
+#footer {
+  margin-bottom: 2vh;
+}
 @media (max-width: 768px) {
+  #wrapper {width: 95%;  margin: auto; }
   .section {
     display: block;
     margin-top: 5vh;
@@ -81,8 +83,9 @@ export default {
   }
 }
 @media (min-width: 768px) {
-  #wrapper {width: 98%;  margin: 0 auto; }
-  #content {width: 96%; margin: 0 auto;}
+  #wrapper {width: 99%;  margin: 0 auto; }
+  #content {width: 98.5%; margin: 0 auto;}
+  #footer {width: 98%; margin: 0 auto;}
 }
 @media (min-width: 992px) {}
 @media (min-width: 1200px) {}

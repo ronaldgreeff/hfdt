@@ -1,10 +1,13 @@
 <template>
-  <div>
+  <div id="main">
     <Nuxt />
   </div>
 </template>
 
 <style>
+* {
+  margin: 0;
+}
 /* Colours
 Background: #f9f5ef
 */
@@ -93,7 +96,8 @@ li {
   Letter-spacing: -0.05em
   */
   .hero-text, /**/
-  input /**/ {
+  input, /**/
+  .newsletter-text {
     font-size: 144px; /**/
     line-height: 138px; /**/
     letter-spacing: -0.05em; /**/

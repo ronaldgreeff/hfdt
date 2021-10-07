@@ -14,16 +14,14 @@
       </thead>
       <tbody>
         <tr v-bind:class="{ 'border-bottom': readMore }">
-          <td class="">Name: {{ carouselData[selectedIndex].name | titalize }}</td>
+          <td class="border-bottom">Name: {{ carouselData[selectedIndex].name | titalize }}</td>
           <td class="td-space"></td>
-          <!-- <td class="">Size: [{{ carouselData[selectedIndex].sizeValue }}] {{ carouselData[selectedIndex].sizeMeasure }}</td> -->
-          <td class="">Availability: [{{ carouselData[selectedIndex].availability | capitalize }}]</td>
+          <td class="border-bottom">Availability: [{{ carouselData[selectedIndex].availability | capitalize }}]</td>
         </tr>
         <tr v-bind:class="{ hidden: readMore }">
-          <td class="border-top border-bottom">Location: [{{ carouselData[selectedIndex].location | titalize }}]</td>
+          <td class="border-bottom">Location: [{{ carouselData[selectedIndex].location | titalize }}]</td>
           <td class="td-space"></td>
-          <!-- <td class="border-top border-bottom">Availability: [{{ carouselData[selectedIndex].availability | capitalize }}]</td> -->
-          <td class="border-top border-bottom">Size: [{{ carouselData[selectedIndex].sizeValue }}] {{ carouselData[selectedIndex].sizeMeasure }}</td>
+          <td class="border-bottom">Size: [{{ carouselData[selectedIndex].sizeValue }}] {{ carouselData[selectedIndex].sizeMeasure }}</td>
         </tr>
         <tr v-bind:class="{ hidden: readMore }" class="border-bottom">
           <td class="large-only"></td>
@@ -32,7 +30,7 @@
         </tr>
       </tbody>
     </table>
-    <button class="submit" v-on:click="toggleReadMore">{{ readMoreText }}</button>
+    <button v-bind:class="{ active: !readMore }" v-on:click="toggleReadMore" class="submit">{{ readMoreText }}</button>
   </div>
 </template>
 
@@ -93,12 +91,12 @@
     background: none;
     border: none;
   }
-  td {
+  button.submit.active {
+    opacity: 0.3;
+  }
+  td, button.submit {
     padding-top: 5px;
     padding-bottom: 7px;
-  }
-  td.border-top {
-    border-top: 1px solid #736357;
   }
   td.border-bottom,
   tr.border-bottom {

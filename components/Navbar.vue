@@ -93,7 +93,7 @@ header {
   width: 100%;
 }
 nav {
-  margin: 40px 25px 75px 25px;
+  margin: 30px 25px 75px 25px;
 }
 hr {
   display: none;
@@ -133,6 +133,7 @@ hr {
     border: 0px;
     width: 90%;
     float: left;
+    margin: 4vh 1vw 4vh 1vw;
   }
   .bar, hr {
     display: block;
@@ -156,15 +157,9 @@ hr {
     text-align: center;
     transition: 0.3s;
   }
-
   .nav-menu.active {
     left: 0;
   }
-
-  .nav-col-spacer {
-    margin: 4vh 0vw 1vh 0vw;
-  }
-
   .hamburger {
     display: block;
     cursor: pointer;
