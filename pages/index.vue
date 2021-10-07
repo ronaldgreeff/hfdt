@@ -4,6 +4,7 @@
       <Navbar v-bind:navColumns="navColumns" />
     </div>
     <div id="content">
+      <!-- <navbarTriggerTry v-bind:navColumns="navColumns" /> -->
       <div class="section"><IntroHeroText v-bind:introHeroText="introHeroText" /></div>
       <div class="section"><IntroDescription v-bind:introDescription="introDescription" /></div>
       <div class="section"><MainCarousel v-bind:carouselData="carouselData" v-bind:carouselImages="carouselImages" /></div>
