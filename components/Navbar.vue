@@ -92,9 +92,6 @@ export default {
 header {
   width: 100%;
 }
-nav {
-  margin: 30px 25px 75px 25px;
-}
 hr {
   display: none;
 }
@@ -111,8 +108,9 @@ hr {
     height: 20vh;
   }
   nav {
-    margin: 25px 25px 75px 25px;
+    margin: 2% 4% 2% 4%;
   }
+  .nav-item-block h3 { margin: 0vh 0vw 2vh 0vw}
   .text-left { text-align: left; }
   .nav-contact-line {
     margin-top: 5px;
@@ -124,7 +122,7 @@ hr {
     align-items: center;
   }
   .nav-menu {
-    padding: 5%;
+    padding: 3%;
   }
   .hamburger {
     display: none;
@@ -147,7 +145,7 @@ hr {
     transition: all 0.3s ease-in-out;
   }
   .nav-menu {
-    margin-top: 20vh;
+    margin-top: 10vh;
     position: fixed;
     height: 90vh;
     left: -110%;
@@ -159,6 +157,15 @@ hr {
   }
   .nav-menu.active {
     left: 0;
+  }
+  .nav-menu a {
+    font-size: 18px;
+    line-height: 19px;
+    letter-spacing: 0em;
+    font-size: x-large;
+  }
+  .nav-col-spacer-half {
+    margin: 0vh 0vw 3vh 0vw;
   }
   .hamburger {
     display: block;
@@ -183,6 +190,9 @@ hr {
 @media (min-width: 768px) {
   .mobile-only {
     display: none;
+  }
+  nav {
+    margin: 1%;
   }
   .navbar {
     display: flex;
